@@ -1,0 +1,17 @@
+  2/2 Mean: 0.275 ---------------------------------------- 0:00:15 0:00:00Results written to jobs\igor\baseline\result.json
+         igor on igor          
+┌─────────────────────┬───────┐
+│ Metric              │ Value │
+├─────────────────────┼───────┤
+│ Agent               │ igor  │
+│ Dataset             │ igor  │
+│ Trials              │ 2     │
+│ Errors              │ 0     │
+│                     │       │
+│ Mean                │ 0.275 │
+│                     │       │
+│ Reward Distribution │       │
+│   reward = 0.25     │ 1     │
+│   reward = 0.3      │ 1     │
+└─────────────────────┴───────┘
+

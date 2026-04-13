@@ -1,0 +1,2 @@
+commit	avg_score	passed	task_scores	cost_usd	status	description
+1276def	0.750	3/4	top-asap:1.0,intercontrat:0.0,brief-bnp:1.0,no-hallucination:1.0	0.15	keep	baseline
