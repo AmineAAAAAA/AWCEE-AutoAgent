@@ -1,0 +1,93 @@
+Tip: There are many benchmarks available in Harbor's registry.
+Run `harbor datasets list` to see all available datasets.
+
++--------------------- Traceback (most recent call last) ---------------------+
+| C:\Users\AmineAOUCI\AWCEE-AutoAgent\.venv\Lib\site-packages\harbor\cli\jobs |
+| .py:972 in start                                                            |
+|                                                                             |
+|    969                                                                      |
+|    970     show_registry_hint_if_first_run(console)                         |
+|    971                                                                      |
+| >  972     job, job_result = run_async(_run_job())                          |
+|    973                                                                      |
+|    974     # Print results tables                                           |
+|    975     print_job_results_tables(job_result)                             |
+|                                                                             |
+| C:\Users\AmineAOUCI\AWCEE-AutoAgent\.venv\Lib\site-packages\harbor\cli\util |
+| s.py:18 in run_async                                                        |
+|                                                                             |
+|   15     Requires Python 3.12+ (which is the minimum version for this proje |
+|   16     """                                                                |
+|   17     if sys.platform == "win32":                                        |
+| > 18         return asyncio.run(coro, loop_factory=asyncio.ProactorEventLoo |
+|   19     return asyncio.run(coro)                                           |
+|   20                                                                        |
+|   21                                                                        |
+|                                                                             |
+| C:\Users\AmineAOUCI\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-n |
+| one\Lib\asyncio\runners.py:195 in run                                       |
+|                                                                             |
+|   192             "asyncio.run() cannot be called from a running event loop |
+|   193                                                                       |
+|   194     with Runner(debug=debug, loop_factory=loop_factory) as runner:    |
+| > 195         return runner.run(main)                                       |
+|   196                                                                       |
+|   197                                                                       |
+|   198 def _cancel_all_tasks(loop):                                          |
+|                                                                             |
+| C:\Users\AmineAOUCI\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-n |
+| one\Lib\asyncio\runners.py:118 in run                                       |
+|                                                                             |
+|   115                                                                       |
+|   116         self._interrupt_count = 0                                     |
+|   117         try:                                                          |
+| > 118             return self._loop.run_until_complete(task)                |
+|   119         except exceptions.CancelledError:                             |
+|   120             if self._interrupt_count > 0:                             |
+|   121                 uncancel = getattr(task, "uncancel", None)            |
+|                                                                             |
+| C:\Users\AmineAOUCI\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-n |
+| one\Lib\asyncio\base_events.py:725 in run_until_complete                    |
+|                                                                             |
+|    722         if not future.done():                                        |
+|    723             raise RuntimeError('Event loop stopped before Future com |
+|    724                                                                      |
+| >  725         return future.result()                                       |
+|    726                                                                      |
+|    727     def stop(self):                                                  |
+|    728         """Stop running the event loop.                              |
+|                                                                             |
+| C:\Users\AmineAOUCI\AWCEE-AutoAgent\.venv\Lib\site-packages\harbor\cli\jobs |
+| .py:946 in _run_job                                                         |
+|                                                                             |
+|    943             )                                                        |
+|    944                                                                      |
+|    945     async def _run_job():                                            |
+| >  946         job = await Job.create(config)                               |
+|    947         _confirm_host_env_access(                                    |
+|    948             job,                                                     |
+|    949             console,                                                 |
+|                                                                             |
+| C:\Users\AmineAOUCI\AWCEE-AutoAgent\.venv\Lib\site-packages\harbor\job.py:1 |
+| 00 in create                                                                |
+|                                                                             |
+|    97                                                                       |
+|    98     @classmethod                                                      |
+|    99     async def create(cls, config: JobConfig) -> "Job":                |
+| > 100         task_configs = await cls._resolve_task_configs(config)        |
+|   101         metrics = await cls._resolve_metrics(config, task_configs)    |
+|   102                                                                       |
+|   103         await cls._cache_tasks(task_configs)                          |
+|                                                                             |
+| C:\Users\AmineAOUCI\AWCEE-AutoAgent\.venv\Lib\site-packages\harbor\job.py:2 |
+| 43 in _resolve_task_configs                                                 |
+|                                                                             |
+|   240             )                                                         |
+|   241                                                                       |
+|   242         if not task_configs:                                          |
+| > 243             raise ValueError("Either datasets or tasks must be provid |
+|   244                                                                       |
+|   245         return task_configs                                           |
+|   246                                                                       |
++-----------------------------------------------------------------------------+
+ValueError: Either datasets or tasks must be provided.
