@@ -1,4 +1,4 @@
-  2/2 Mean: 0.275 ---------------------------------------- 0:00:15 0:00:00Results written to jobs\igor\baseline\result.json
+  2/2 Mean: 1.000 ---------------------------------------- 0:00:42 0:00:00Results written to jobs\igor\baseline\result.json
          igor on igor          
 ┌─────────────────────┬───────┐
 │ Metric              │ Value │
@@ -8,10 +8,9 @@
 │ Trials              │ 2     │
 │ Errors              │ 0     │
 │                     │       │
-│ Mean                │ 0.275 │
+│ Mean                │ 1.000 │
 │                     │       │
 │ Reward Distribution │       │
-│   reward = 0.25     │ 1     │
-│   reward = 0.3      │ 1     │
+│   reward = 1.0      │ 2     │
 └─────────────────────┴───────┘
 

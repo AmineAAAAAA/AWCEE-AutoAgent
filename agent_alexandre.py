@@ -61,16 +61,7 @@ Dashboard -> /task/output_dashboard.json
 
 TOOLS_PRESET = {"type": "preset", "preset": "claude_code"}
 CUSTOM_TOOLS = []
-EXTERNAL_MCP_SERVERS = {
-    "pennylane": {
-        "url": os.getenv("AWCEE_MCP_URL", "http://localhost:3001/mcp"),
-        "headers": {"Authorization": f"Bearer {os.getenv('AWCEE_API_KEY', '')}"}
-    },
-    "boondmanager": {
-        "url": os.getenv("AWCEE_MCP_URL", "http://localhost:3001/mcp"),
-        "headers": {"Authorization": f"Bearer {os.getenv('AWCEE_API_KEY', '')}"}
-    }
-}
+EXTERNAL_MCP_SERVERS = {}  # MCP disabled for baseline
 
 SUBAGENTS   = None
 HOOKS       = None

@@ -1,4 +1,4 @@
-  1/1 Mean: 0.000 ---------------------------------------- 0:00:15 0:00:00Results written to jobs\alexandre\baseline\result.json
+  1/1 Mean: 0.750 ---------------------------------------- 0:01:10 0:00:00Results written to jobs\alexandre\baseline\result.json
       alexandre on alexandre       
 ┌─────────────────────┬───────────┐
 │ Metric              │ Value     │
@@ -8,9 +8,9 @@
 │ Trials              │ 1         │
 │ Errors              │ 0         │
 │                     │           │
-│ Mean                │ 0.000     │
+│ Mean                │ 0.750     │
 │                     │           │
 │ Reward Distribution │           │
-│   reward = 0.0      │ 1         │
+│   reward = 0.75     │ 1         │
 └─────────────────────┴───────────┘
 

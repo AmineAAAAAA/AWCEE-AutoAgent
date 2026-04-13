@@ -1,4 +1,4 @@
-  1/1 Mean: 0.150 ---------------------------------------- 0:00:15 0:00:00Results written to jobs\marie\baseline\result.json
+  1/1 Mean: 0.800 ---------------------------------------- 0:01:26 0:00:00Results written to jobs\marie\baseline\result.json
         marie on marie         
 ┌─────────────────────┬───────┐
 │ Metric              │ Value │
@@ -8,9 +8,9 @@
 │ Trials              │ 1     │
 │ Errors              │ 0     │
 │                     │       │
-│ Mean                │ 0.150 │
+│ Mean                │ 0.800 │
 │                     │       │
 │ Reward Distribution │       │
-│   reward = 0.15     │ 1     │
+│   reward = 0.8      │ 1     │
 └─────────────────────┴───────┘
 
