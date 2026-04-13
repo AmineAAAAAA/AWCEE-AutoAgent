@@ -1,3 +1,4 @@
+import asyncio
 """
 Marie — Experte PAC 2023-2027, Telepac, Éco-régimes, MAEC.
 The meta-agent (Claude Code) iterates on AGENT CONFIG section only.
@@ -207,27 +208,46 @@ def _trajectory_to_atif(messages, result_msg):
 
     final = {}
     if result_msg:
-        final["cost_usd"] = result_msg.cost_usd
-        final["total_input_tokens"] = result_msg.input_tokens
-        final["total_output_tokens"] = result_msg.output_tokens
+        final["cost_usd"] = getattr(result_msg, "total_cost_usd", None) or getattr(result_msg, "cost_usd", None)
+        final["total_input_tokens"] = getattr(result_msg, "input_tokens", None)
+        final["total_output_tokens"] = getattr(result_msg, "output_tokens", None)
 
-    return {"trajectory": steps, "final": final}
+    if result_msg:
+        u = getattr(result_msg, 'usage', None) or {}
+        fm = {"total_prompt_tokens": getattr(u, 'input_tokens', None),
+              "total_completion_tokens": getattr(u, 'output_tokens', None),
+              "total_cost_usd": getattr(result_msg, 'total_cost_usd', None),
+              "total_steps": len(steps),
+              "extra": {"duration_ms": getattr(result_msg, 'duration_ms', 0), "num_turns": getattr(result_msg, 'num_turns', 0)}}
+    else:
+        fm = None
+
+    return {"schema_version": "ATIF-v1.2", "session_id": getattr(result_msg, 'session_id', 'unknown') if result_msg else "unknown",
+            "agent": {"name": "marie", "version": "1.0.0", "model_name": MODEL}, "steps": steps, "final_metrics": fm}
+
+
+def _run_in_container():
+    instruction = open("/task/instruction.md").read().strip()
+
+    async def _run():
+        opts = get_options()
+        trajectory, result_msg = [], None
+        async with ClaudeSDKClient(options=opts) as client:
+            await client.query(instruction)
+            async for msg in client.receive_response():
+                trajectory.append(msg)
+                if isinstance(msg, ResultMessage):
+                    result_msg = msg
+        return trajectory, result_msg
+
+    trajectory, result_msg = asyncio.run(_run())
+    atif = _trajectory_to_atif(trajectory, result_msg)
+    traj_dir = Path("/logs/agent")
+    traj_dir.mkdir(parents=True, exist_ok=True)
+    (traj_dir / "trajectory.json").write_text(json.dumps(atif, indent=2))
+    if result_msg:
+        print(f"cost_usd={getattr(result_msg, 'total_cost_usd', 0) or 0:.4f}")
 
 
 if __name__ == "__main__":
-    import asyncio
-    from pathlib import Path
-
-    instruction_path = Path("/task/instruction.md")
-    instruction = instruction_path.read_text() if instruction_path.exists() else "Bonjour Marie, comment puis-je t'aider ?"
-
-    async def main():
-        options = get_options()
-        client = ClaudeSDKClient(options)
-        messages, result = await client.run(instruction)
-        traj = _trajectory_to_atif(messages, result)
-        Path("trajectory.json").write_text(json.dumps(traj, ensure_ascii=False, indent=2))
-        if result:
-            print(f"[Marie] Coût: ${result.cost_usd:.4f} | Tokens: {result.input_tokens}+{result.output_tokens}")
-
-    asyncio.run(main())
+    _run_in_container()

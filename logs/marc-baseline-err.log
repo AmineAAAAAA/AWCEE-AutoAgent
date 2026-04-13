@@ -1,0 +1,5 @@
+Usage: harbor run [OPTIONS]
+Try 'harbor run -h' for help.
+┌─ Error ─────────────────────────────────────────────────────────────────────┐
+│ No such option: --no-progress Did you mean --no-export-traces?              │
+└─────────────────────────────────────────────────────────────────────────────┘
