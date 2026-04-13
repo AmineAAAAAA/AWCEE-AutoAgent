@@ -1,17 +1,17 @@
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates git && \
+    apt-get install -y --no-install-recommends ca-certificates git curl && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Python deps — only what the agent needs (harbor excluded via .dockerignore)
+# Python deps
 COPY pyproject.toml ./
 RUN uv pip install --system .
 
-# Agent code
-COPY agent.py ./
+# Agent code — all agents
+COPY agent_marc.py agent_igor.py agent_marie.py agent_lucas.py agent_alexandre.py agent_general.py ./
 
 RUN ln -sf $(which python3) /usr/local/bin/python
-RUN mkdir -p /logs /app/output
+RUN mkdir -p /logs /app/output /app/.agent /task

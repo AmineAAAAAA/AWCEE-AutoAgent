@@ -1,10 +1,11 @@
 [project]
-name = "autoagent"
-version = "0.1.0"
-description = "Autonomous agent engineering"
+name = "awcee-autoagent"
+version = "1.0.0"
+description = "AWCEE agents — architecture kevinrgu/autoagent"
 requires-python = ">=3.12"
 dependencies = [
-    "openai-agents",
+    "claude-agent-sdk",
+    "python-dotenv",
     "pandas",
     "openpyxl",
     "numpy",
