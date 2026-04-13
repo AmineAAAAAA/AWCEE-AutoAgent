@@ -1,0 +1,16 @@
+  1/1 Mean: 0.750 ---------------------------------------- 0:01:13 0:00:00Results written to jobs\alexandre\run3\result.json
+      alexandre on alexandre       
+┌─────────────────────┬───────────┐
+│ Metric              │ Value     │
+├─────────────────────┼───────────┤
+│ Agent               │ alexandre │
+│ Dataset             │ alexandre │
+│ Trials              │ 1         │
+│ Errors              │ 0         │
+│                     │           │
+│ Mean                │ 0.750     │
+│                     │           │
+│ Reward Distribution │           │
+│   reward = 0.75     │ 1         │
+└─────────────────────┴───────────┘
+

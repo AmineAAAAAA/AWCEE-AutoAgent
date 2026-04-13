@@ -1,0 +1,16 @@
+  2/2 Mean: 1.000 ---------------------------------------- 0:00:44 0:00:00Results written to jobs\igor\run2\result.json
+         igor on igor          
+┌─────────────────────┬───────┐
+│ Metric              │ Value │
+├─────────────────────┼───────┤
+│ Agent               │ igor  │
+│ Dataset             │ igor  │
+│ Trials              │ 2     │
+│ Errors              │ 0     │
+│                     │       │
+│ Mean                │ 1.000 │
+│                     │       │
+│ Reward Distribution │       │
+│   reward = 1.0      │ 2     │
+└─────────────────────┴───────┘
+

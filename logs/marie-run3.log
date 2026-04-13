@@ -1,0 +1,16 @@
+  1/1 Mean: 0.800 ---------------------------------------- 0:01:35 0:00:00Results written to jobs\marie\run3\result.json
+        marie on marie         
+┌─────────────────────┬───────┐
+│ Metric              │ Value │
+├─────────────────────┼───────┤
+│ Agent               │ marie │
+│ Dataset             │ marie │
+│ Trials              │ 1     │
+│ Errors              │ 0     │
+│                     │       │
+│ Mean                │ 0.800 │
+│                     │       │
+│ Reward Distribution │       │
+│   reward = 0.8      │ 1     │
+└─────────────────────┴───────┘
+

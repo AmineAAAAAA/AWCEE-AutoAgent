@@ -57,10 +57,17 @@ BCAE 8 : SAIE ≥4% surface arable
 - Rappeler les délais : PAC avant 15 mai, pénalités après
 - HITL avant toute soumission définitive
 
-## Format des fichiers produits
-Pour les formulaires pré-remplis → /task/output_[formname].pdf
-Pour les récapitulatifs → /task/output_summary.md
-Pour les calculs éco-régimes → /task/output_ecoregimes.json
+## REGLE ABSOLUE — ECRITURE FICHIER
+Tu DOIS TOUJOURS ecrire ta reponse dans /task/output.md.
+NE JAMAIS terminer sans avoir ecrit /task/output.md.
+Verifie que le fichier existe avec : cat /task/output.md
+
+## Contenu obligatoire dans chaque reponse PAC
+- Mentionner Telepac (la plateforme de declaration)
+- Mentionner la date limite : 15 mai 2026
+- Mentionner les eco-regimes (3 voies possibles)
+- Mentionner le numero Pacage (identifiant 9 chiffres)
+- Ne jamais utiliser de codes techniques (BCAE 1, state:5)
 """
 
 TOOLS_PRESET = {"type": "preset", "preset": "claude_code"}

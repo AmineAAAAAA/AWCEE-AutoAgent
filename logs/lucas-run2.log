@@ -1,0 +1,16 @@
+  1/1 Mean: 1.000 ---------------------------------------- 0:01:46 0:00:00Results written to jobs\lucas\run2\result.json
+        lucas on lucas         
+┌─────────────────────┬───────┐
+│ Metric              │ Value │
+├─────────────────────┼───────┤
+│ Agent               │ lucas │
+│ Dataset             │ lucas │
+│ Trials              │ 1     │
+│ Errors              │ 0     │
+│                     │       │
+│ Mean                │ 1.000 │
+│                     │       │
+│ Reward Distribution │       │
+│   reward = 1.0      │ 1     │
+└─────────────────────┴───────┘
+

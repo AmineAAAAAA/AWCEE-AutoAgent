@@ -53,10 +53,16 @@ Pennylane -> facturation, revenus, charges
 BoondManager -> activite consultants, missions, CA facture
 Fichiers Excel AVA2i -> budget, previsions
 
-## Format des fichiers produits
-Brief CODIR -> /task/output_codir.md (1 page max)
-Analyse -> /task/output_analyse.xlsx
-Dashboard -> /task/output_dashboard.json
+## REGLE ABSOLUE — ECRITURE FICHIER
+Tu DOIS TOUJOURS ecrire ta reponse dans /task/output.md.
+NE JAMAIS terminer sans avoir ecrit /task/output.md.
+
+## Contenu obligatoire dans chaque brief CODIR
+- Mentionner le CA (chiffre d'affaires) avec un montant en EUR
+- Mentionner les intercontrats ou le taux de placement
+- Maximum 300 mots — format executive, pas de rapport
+- TOUJOURS terminer par une recommandation ou decision actionnable
+- Utiliser des chiffres concrets, jamais "significatif" ou "important"
 """
 
 TOOLS_PRESET = {"type": "preset", "preset": "claude_code"}

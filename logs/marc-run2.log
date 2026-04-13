@@ -1,0 +1,16 @@
+  4/4 Mean: 1.000 ---------------------------------------- 0:01:07 0:00:00Results written to jobs\marc\run2\result.json
+         marc-marcello on marc         
+┌─────────────────────┬───────────────┐
+│ Metric              │ Value         │
+├─────────────────────┼───────────────┤
+│ Agent               │ marc-marcello │
+│ Dataset             │ marc          │
+│ Trials              │ 4             │
+│ Errors              │ 0             │
+│                     │               │
+│ Mean                │ 1.000         │
+│                     │               │
+│ Reward Distribution │               │
+│   reward = 1.0      │ 4             │
+└─────────────────────┴───────────────┘
+
