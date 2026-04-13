@@ -1,0 +1,19 @@
+  4/4 Mean: 0.613 ---------------------------------------- 0:01:07 0:00:00Results written to jobs\marc\with-tools\result.json
+         marc-marcello on marc         
+┌─────────────────────┬───────────────┐
+│ Metric              │ Value         │
+├─────────────────────┼───────────────┤
+│ Agent               │ marc-marcello │
+│ Dataset             │ marc          │
+│ Trials              │ 4             │
+│ Errors              │ 0             │
+│                     │               │
+│ Mean                │ 0.613         │
+│                     │               │
+│ Reward Distribution │               │
+│   reward = 0.75     │ 1             │
+│   reward = 0.0      │ 1             │
+│   reward = 1.0      │ 1             │
+│   reward = 0.7      │ 1             │
+└─────────────────────┴───────────────┘
+

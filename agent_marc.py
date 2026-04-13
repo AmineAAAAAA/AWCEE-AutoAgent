@@ -91,7 +91,65 @@ Pour la conversation simple :
 
 TOOLS_PRESET = {"type": "preset", "preset": "claude_code"}
 
-CUSTOM_TOOLS = []
+@tool(name="boondmanager_list_resources", description="Liste les consultants AVA2i depuis BoondManager. Filtre par keywords si fourni.", input_schema={"keywords": str, "limit": int})
+def boondmanager_list_resources(keywords: str = "", limit: int = 50) -> str:
+    """Liste les consultants AVA2i depuis BoondManager. Filtre par keywords si fourni."""
+    import urllib.request, urllib.parse
+    base = os.getenv("BOONDMANAGER_BASE_URL", "https://ui.boondmanager.com/api")
+    token = os.getenv("BOONDMANAGER_TOKEN", "")
+    params = urllib.parse.urlencode({"page[size]": str(limit)})
+    if keywords:
+        params += "&keywords=" + urllib.parse.quote(keywords)
+    req = urllib.request.Request(f"{base}/resources?{params}")
+    req.add_header("Authorization", f"Basic {token}")
+    req.add_header("Content-Type", "application/json")
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read())
+        items = [{"id": i["id"], **i.get("attributes", {})} for i in data.get("data", [])]
+        return json.dumps({"success": True, "count": len(items), "resources": items[:20]}, ensure_ascii=False, default=str)
+    except Exception as e:
+        return json.dumps({"success": False, "error": str(e)})
+
+@tool(name="boondmanager_list_candidates", description="Liste les candidats depuis BoondManager. Filtre par keywords si fourni.", input_schema={"keywords": str, "limit": int})
+def boondmanager_list_candidates(keywords: str = "", limit: int = 50) -> str:
+    """Liste les candidats depuis BoondManager. Filtre par keywords si fourni."""
+    import urllib.request, urllib.parse
+    base = os.getenv("BOONDMANAGER_BASE_URL", "https://ui.boondmanager.com/api")
+    token = os.getenv("BOONDMANAGER_TOKEN", "")
+    params = urllib.parse.urlencode({"page[size]": str(limit)})
+    if keywords:
+        params += "&keywords=" + urllib.parse.quote(keywords)
+    req = urllib.request.Request(f"{base}/candidates?{params}")
+    req.add_header("Authorization", f"Basic {token}")
+    req.add_header("Content-Type", "application/json")
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read())
+        items = [{"id": i["id"], **i.get("attributes", {})} for i in data.get("data", [])]
+        return json.dumps({"success": True, "count": len(items), "candidates": items[:20]}, ensure_ascii=False, default=str)
+    except Exception as e:
+        return json.dumps({"success": False, "error": str(e)})
+
+@tool(name="boondmanager_list_needs", description="Liste les besoins clients ouverts depuis BoondManager.", input_schema={"limit": int})
+def boondmanager_list_needs(limit: int = 50) -> str:
+    """Liste les besoins clients ouverts depuis BoondManager."""
+    import urllib.request, urllib.parse
+    base = os.getenv("BOONDMANAGER_BASE_URL", "https://ui.boondmanager.com/api")
+    token = os.getenv("BOONDMANAGER_TOKEN", "")
+    params = urllib.parse.urlencode({"page[size]": str(limit)})
+    req = urllib.request.Request(f"{base}/opportunities?{params}")
+    req.add_header("Authorization", f"Basic {token}")
+    req.add_header("Content-Type", "application/json")
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read())
+        items = [{"id": i["id"], **i.get("attributes", {})} for i in data.get("data", [])]
+        return json.dumps({"success": True, "count": len(items), "needs": items[:20]}, ensure_ascii=False, default=str)
+    except Exception as e:
+        return json.dumps({"success": False, "error": str(e)})
+
+CUSTOM_TOOLS = [boondmanager_list_resources, boondmanager_list_candidates, boondmanager_list_needs]
 
 EXTERNAL_MCP_SERVERS = {}  # MCP disabled for baseline — enable when MCP server available
 # To enable BoondManager MCP:
